@@ -26,6 +26,19 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "no-else-return": "error",
+          "react-hooks/exhaustive-deps": "error",
+          "@typescript-eslint/no-unused-vars": "error",
+          "no-nested-ternary": "error"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "prettier": "2.4.1",
+    "prettier-eslint": "^13.0.0"
   }
 }
