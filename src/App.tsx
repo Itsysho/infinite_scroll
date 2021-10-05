@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+import PostList from './containers/PostList'
+import { routerPath } from './common/appConfig'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main data-testid='app'>
+      <Router>
+        <Route path={routerPath.root}>
+          <PostList />
+        </Route>
+        <Redirect to={routerPath.root} />
+      </Router>
+    </main>
+  )
 }
 
-export default App;
+export default App

@@ -39,8 +39,19 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Skill set
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- react (with [create-react-app](https://github.com/facebook/create-react-app))
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Directory structure
+
+```
+root/
+├ public/        index.html and other public static assets (e.g. favicon)
+├ src/
+│ ├ common/      common variables, e.g. appConfig.ts for route path and env variables ...etc
+│ ├ containers/  components connect to store and with child components
+│ ├ App.tsx
+│ └ index.tsx
+└ .env           common usage system variables for create-react-app
+```
