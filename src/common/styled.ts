@@ -2,7 +2,16 @@ import { createGlobalStyle } from 'styled-components'
 
 export const theme = {
   color: {
-    main: '#006AA6'
+    main: '#006AA6',
+    white: '#fff',
+    borderColor: '#E9E9E9'
+  },
+  border: '2px solid #E9E9E9',
+  space: {
+    padding: '40px'
+  },
+  typography: {
+    subtitle: '20px bold'
   }
 }
 
