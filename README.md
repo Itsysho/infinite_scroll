@@ -42,6 +42,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Skill set
 
 - react (with [create-react-app](https://github.com/facebook/create-react-app))
+- [styled-components](https://styled-components.com)
 
 ## Directory structure
 
@@ -51,6 +52,7 @@ root/
 ├ src/
 │ ├ common/      common variables, e.g. appConfig.ts for route path and env variables ...etc
 │ ├ containers/  components connect to store and with child components
+│ ├ services/  ajax and mockData
 │ ├ App.tsx
 │ └ index.tsx
 └ .env           common usage system variables for create-react-app
