@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { InfiniteScroll } from '../components/InfiniteScroll'
 import { mockPostList } from '../services/mockData'
 
 const Paper = styled.div`
@@ -20,15 +21,20 @@ const Title = styled.div`
 `
 
 export default function PostList() {
+  const handleGetPostList = () => {
+    console.log('handleGetPostList')
+  }
   return (
     <Paper>
-      {mockPostList.map((item) => (
-        <Post>
-          <Title>{item.title}</Title>
-          <br />
-          {item.excerpt}
-        </Post>
-      ))}
+      <InfiniteScroll onBottom={handleGetPostList}>
+        {mockPostList.map((item) => (
+          <Post key={item.id}>
+            <Title>{item.title}</Title>
+            <br />
+            {item.excerpt}
+          </Post>
+        ))}
+      </InfiniteScroll>
     </Paper>
   )
 }
