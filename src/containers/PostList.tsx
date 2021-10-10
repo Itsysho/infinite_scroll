@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { InfiniteScroll } from '../components/InfiniteScroll'
+import Services, { DEFAULT_POSTS_PARAMS } from '../services/services'
 import { objToQueryStr } from '../utils/function'
 
 const Paper = styled.div`
@@ -29,9 +30,9 @@ export default function PostList() {
   const handleGetPostList = useCallback(() => {
     axios
       .get(
-        '/posts' +
+        Services.Post +
           objToQueryStr({
-            popular: true,
+            ...DEFAULT_POSTS_PARAMS,
             before: lastId
           })
       )
