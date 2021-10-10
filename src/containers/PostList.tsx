@@ -1,6 +1,8 @@
+import axios from 'axios'
+import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { InfiniteScroll } from '../components/InfiniteScroll'
-import { mockPostList } from '../services/mockData'
+import { objToQueryStr } from '../utils/function'
 
 const Paper = styled.div`
   background-color: ${(props) => props.theme.color.white};
@@ -21,13 +23,35 @@ const Title = styled.div`
 `
 
 export default function PostList() {
-  const handleGetPostList = () => {
-    console.log('handleGetPostList')
-  }
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [lastId, setLastId] = useState<number | undefined>(undefined)
+  const [postList, setPostList] = useState<any[]>([])
+  const handleGetPostList = useCallback(() => {
+    axios
+      .get(
+        '/posts' +
+          objToQueryStr({
+            popular: true,
+            before: lastId
+          })
+      )
+      .then((response) => {
+        const list: any[] = response.data
+        setLastId(list[list.length - 1].id)
+        setPostList(list)
+        setIsLoading(false)
+        document.documentElement.scrollTop = 0
+      })
+      .catch((error) => {
+        setIsLoading(false)
+        console.log(error)
+      })
+  }, [lastId])
+
   return (
     <Paper>
-      <InfiniteScroll onBottom={handleGetPostList}>
-        {mockPostList.map((item) => (
+      <InfiniteScroll onBottom={handleGetPostList} isLoading={isLoading}>
+        {postList.map((item) => (
           <Post key={item.id}>
             <Title>{item.title}</Title>
             <br />
